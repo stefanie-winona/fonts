@@ -1,0 +1,133 @@
+<!--
+  Estriol Face Cream — Iterable email product component
+  Email-client safe: table-based layout, inline CSS for critical styling,
+  <style> block + media query for mobile stacking, VML button for Outlook.
+  Tested rendering targets: Gmail, Apple Mail, Outlook (Win/365), iOS Mail.
+
+  HOW TO USE IN ITERABLE:
+  - Paste the markup from <!-- COMPONENT START --> to <!-- COMPONENT END -->.
+  - Swap the {{IMAGE_URL}} and {{CTA_URL}} placeholders for your hosted asset
+    and landing-page link (you mentioned you'll drop the image in manually).
+  - The <style> block can live in the campaign <head>; it only enhances the
+    inline styles (mobile stacking + hover), so the email is fine without it.
+-->
+
+<!-- Place this in the campaign template <head> (or top of the body). -->
+<style type="text/css">
+  /* Client resets */
+  body { margin: 0 !important; padding: 0 !important; }
+  table { border-collapse: collapse; }
+  img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+
+  /* Mobile: stack the image above the content and let the image fill width */
+  @media only screen and (max-width: 600px) {
+    .ec-container { width: 100% !important; }
+    .ec-stack { display: block !important; width: 100% !important; }
+    .ec-img-cell { padding: 0 0 20px 0 !important; text-align: center !important; }
+    .ec-img-tile { width: 100% !important; max-width: 100% !important; }
+    .ec-img-tile img { width: 100% !important; height: auto !important; }
+    .ec-content-cell { padding: 0 !important; }
+    .ec-btn-link { display: block !important; width: 100% !important; }
+    .ec-h1 { font-size: 26px !important; line-height: 32px !important; }
+  }
+
+  /* Button hover (ignored by clients that don't support it — harmless) */
+  .ec-btn-link:hover { background-color: #8a72e0 !important; }
+</style>
+
+<!-- COMPONENT START -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+  <tr>
+    <td align="center" style="padding:16px;">
+
+      <!-- Card -->
+      <table role="presentation" class="ec-container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border:1px solid #ddd5f2; border-radius:20px;">
+        <tr>
+          <td style="padding:24px;">
+
+            <!-- Two-column row: image | content (stacks on mobile) -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+
+                <!-- Image tile -->
+                <td class="ec-stack ec-img-cell" valign="top" width="252" style="width:252px; padding:0 24px 0 0; vertical-align:top;">
+                  <table role="presentation" class="ec-img-tile" width="252" cellpadding="0" cellspacing="0" border="0" style="width:252px; max-width:252px; background-color:#dcd5ee; border-radius:14px;">
+                    <tr>
+                      <td align="center" style="padding:0;">
+                        <!-- Replace src with your hosted image (square ~520x520). -->
+                        <img src="{{IMAGE_URL}}" alt="Estriol Skin Cream with Tretinoin" width="252" style="display:block; width:100%; max-width:252px; height:auto; border-radius:14px;" />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+                <!-- Content -->
+                <td class="ec-stack ec-content-cell" valign="top" style="vertical-align:top;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                    <!-- Heading -->
+                    <tr>
+                      <td class="ec-h1" style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:30px; line-height:36px; font-weight:700; color:#4a3c6e; padding:0 0 12px 0;">
+                        Estriol Face Cream with Tretinoin
+                      </td>
+                    </tr>
+
+                    <!-- Subheading -->
+                    <tr>
+                      <td style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:18px; line-height:24px; font-weight:400; color:#5f5193; padding:0 0 16px 0;">
+                        Formulated for vibrant, glowing skin
+                      </td>
+                    </tr>
+
+                    <!-- Benefit bullets (table-based for consistent rendering) -->
+                    <tr>
+                      <td style="padding:0 0 20px 0;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:22px; color:#6a5c97;">
+                          <tr>
+                            <td width="20" valign="top" style="width:20px; padding:0 0 8px 0; color:#6a5c97;">&bull;</td>
+                            <td valign="top" style="padding:0 0 8px 0;">Improves tone &amp; texture</td>
+                          </tr>
+                          <tr>
+                            <td width="20" valign="top" style="width:20px; padding:0 0 8px 0; color:#6a5c97;">&bull;</td>
+                            <td valign="top" style="padding:0 0 8px 0;">Reduces fine lines &amp; wrinkles</td>
+                          </tr>
+                          <tr>
+                            <td width="20" valign="top" style="width:20px; padding:0; color:#6a5c97;">&bull;</td>
+                            <td valign="top" style="padding:0;">Restores a healthy, radiant complexion</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- CTA button (bulletproof: VML for Outlook, padded anchor elsewhere) -->
+                    <tr>
+                      <td style="padding:0;">
+                        <!--[if mso]>
+                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:56px;v-text-anchor:middle;width:300px;" arcsize="29%" stroke="f" fillcolor="#9d85e8">
+                          <w:anchorlock/>
+                          <center style="color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:400;">TRY TODAY</center>
+                        </v:roundrect>
+                        <![endif]-->
+                        <!--[if !mso]><!-- -->
+                        <a href="{{CTA_URL}}" target="_blank" class="ec-btn-link" style="background-color:#9d85e8; border-radius:16px; color:#ffffff; display:block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:22px; font-weight:400; line-height:22px; text-align:center; text-decoration:none; padding:17px 24px; letter-spacing:0.5px;">
+                          TRY TODAY
+                        </a>
+                        <!--<![endif]-->
+                      </td>
+                    </tr>
+
+                  </table>
+                </td>
+
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+      <!-- /Card -->
+
+    </td>
+  </tr>
+</table>
+<!-- COMPONENT END -->
