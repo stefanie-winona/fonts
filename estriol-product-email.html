@@ -1,100 +1,63 @@
-<!--
-  Estriol Face Cream — Iterable HTML/CSS content-block component
-  FLUID build: fills the Iterable row/column it is dropped into (width:100%),
-  so it never overflows the margin. No fixed pixel widths on the card.
-  - Table-based, inline CSS for client support.
-  - Percentage columns => 2-column on desktop, stacks to 1 column on mobile.
-  - VML button for Outlook; padded anchor for all other clients.
-  Replace {{IMAGE_URL}} and {{CTA_URL}} (CTA url appears twice: VML + anchor).
--->
-
-<style type="text/css">
-  /* Mobile: stack image above content */
-  @media only screen and (max-width: 480px) {
-    .ec-stack { display: block !important; width: 100% !important; }
-    .ec-img-cell { padding: 0 0 20px 0 !important; }
-    .ec-h1 { font-size: 26px !important; line-height: 32px !important; }
-  }
-  .ec-btn-link:hover { background-color: #8a72e0 !important; }
-</style>
-
-<!-- COMPONENT START -->
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; background-color:#ffffff; border:1px solid #ddd5f2; border-radius:20px;">
+<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:600px; width:100%; background-color:#FFFFFF; border:1px solid #E2D9FF; border-radius:12px; border-collapse:separate;">
   <tr>
-    <td style="padding:24px;">
-
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <td style="padding:12px;">
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
 
-          <!-- Image column (left on desktop, ~42%) -->
-          <td class="ec-stack ec-img-cell" valign="top" width="42%" style="width:42%; padding:0 20px 0 0; vertical-align:top;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; background-color:#dcd5ee; border-radius:14px;">
-              <tr>
-                <td align="center" style="padding:0;">
-                  <img src="{{IMAGE_URL}}" alt="Estriol Skin Cream with Tretinoin" width="100%" style="display:block; width:100%; height:auto; border-radius:14px;" />
-                </td>
-              </tr>
-            </table>
+          <td width="170" valign="top" style="width:170px;">
+            <img src="https://library.iterable.com/3032/19262/0304c00cb07344eaaa5c73553e1196b8-camada_1.png" alt="Estriol Face Cream with Tretinoin" width="170" style="display:block; width:170px; height:auto; border:0;" />
           </td>
 
-          <!-- Content column (right on desktop, ~58%) -->
-          <td class="ec-stack" valign="top" width="58%" style="width:58%; vertical-align:top;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <td width="18" style="width:18px;"> </td>
 
-              <tr>
-                <td class="ec-h1" style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:30px; line-height:36px; font-weight:700; color:#4a3c6e; padding:0 0 12px 0;">
-                  Estriol Face Cream with Tretinoin
-                </td>
-              </tr>
+          <td valign="top" style="font-family:Arial, Helvetica, sans-serif; color:#4B3D73; text-align:left;">
 
-              <tr>
-                <td style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:18px; line-height:24px; font-weight:400; color:#5f5193; padding:0 0 16px 0;">
-                  Formulated for vibrant, glowing skin
-                </td>
-              </tr>
+            <div style="font-size:16px; line-height:1.25; font-weight:700; margin:0 0 6px 0;">
+              Estriol Face Cream<br />
+              with Tretinoin
+            </div>
 
-              <tr>
-                <td style="padding:0 0 20px 0;">
-                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; line-height:22px; color:#6a5c97;">
-                    <tr>
-                      <td width="18" valign="top" style="width:18px; padding:0 0 8px 0; color:#6a5c97;">&bull;</td>
-                      <td valign="top" style="padding:0 0 8px 0;">Improves tone &amp; texture</td>
-                    </tr>
-                    <tr>
-                      <td width="18" valign="top" style="width:18px; padding:0 0 8px 0; color:#6a5c97;">&bull;</td>
-                      <td valign="top" style="padding:0 0 8px 0;">Reduces fine lines &amp; wrinkles</td>
-                    </tr>
-                    <tr>
-                      <td width="18" valign="top" style="width:18px; padding:0; color:#6a5c97;">&bull;</td>
-                      <td valign="top" style="padding:0;">Restores a healthy, radiant complexion</td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
+            <div style="font-size:14px; line-height:1.35; font-weight:700; margin:0 0 8px 0;">
+              Formulated for vibrant, glowing skin
+            </div>
 
+            <div style="font-size:13px; line-height:1.45; margin:0 0 12px 0;">
+              • Improves tone &amp; texture<br />
+              • Reduces fine lines &amp; wrinkles<br />
+              • Restores a healthy, radiant complexion
+            </div>
+
+            <table role="presentation" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td style="padding:0;">
-                  <!--[if mso]>
-                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{CTA_URL}}" style="height:54px;v-text-anchor:middle;width:100%;" arcsize="30%" stroke="f" fillcolor="#9d85e8">
-                    <w:anchorlock/>
-                    <center style="color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:22px;font-weight:400;">TRY TODAY</center>
-                  </v:roundrect>
-                  <![endif]-->
-                  <!--[if !mso]><!-- -->
-                  <a href="{{CTA_URL}}" target="_blank" class="ec-btn-link" style="background-color:#9d85e8; border-radius:16px; color:#ffffff; display:block; width:100%; box-sizing:border-box; font-family:'Helvetica Neue',Arial,sans-serif; font-size:22px; font-weight:400; line-height:22px; text-align:center; text-decoration:none; padding:16px 0; letter-spacing:0.5px;">
+                <td align="center" bgcolor="#AF8EFF" style="border-radius:6px;">
+
+                  <a href="https://app.bywinona.com/login?redirectTo=cream_modal" target="_blank" style="
+                        display:inline-block;
+                        background:#AF8EFF;
+                        color:#FFFFFF;
+                        text-decoration:none;
+                        text-align:center;
+                        font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+                        font-size:15px;
+                        font-weight:400;
+                        line-height:2;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                        padding:5px 20px;
+                        border-radius:6px;
+                        -webkit-text-size-adjust:none;
+                        mso-line-height-rule:exactly;">
                     TRY TODAY
                   </a>
-                  <!--<![endif]-->
+
                 </td>
               </tr>
-
             </table>
+
           </td>
 
         </tr>
       </table>
-
     </td>
   </tr>
 </table>
-<!-- COMPONENT END -->
